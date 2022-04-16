@@ -1,0 +1,35 @@
+{
+  "name": "webd_project",
+  "version": "1.0.0",
+  "description": "final project for the web development class, the idea is to make blog website for students",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qasim-iqbal/webd_project.git"
+  },
+  "keywords": [
+    "blogging",
+    "website"
+  ],
+  "author": "Group 22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qasim-iqbal/webd_project/issues"
+  },
+  "homepage": "https://github.com/qasim-iqbal/webd_project#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "marked": "^4.0.14",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.0",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
