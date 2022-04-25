@@ -54,4 +54,14 @@ router.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/')
 })
+
+router.post('/articles/post-comment', function(req, res) {
+    article.findByIdAndUpdate({"_id": req.body.post_id}, {
+        $push: {
+            "comments": {username: req.body.username, comment: req.body.comment}
+        }
+    }, function (error, post) {
+        res.send("comment successful!")
+    })
+})
 module.exports = router

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
@@ -20,6 +21,57 @@
         <div>
             <%= article.markdown %>
         </div>
+
+        <div class="card my-4">
+            <h5 class="card-header"> Leave a Comment:</h5>
+            <div class="card-body">
+                <form method="POST" action="/post-comment" onsubmit="return postComment(this);">
+                    <input type="hidden" name="article_id" value="<%= article._id %>"/>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="username" /> 
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="message here ..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+
+            function postComment(form) {
+                // $.ajax({
+                //         method: "POST",
+                //         url: "https://baconipsum.com/api/?type=all-meat",
+                //         dataType: "json"
+                //     })
+                //         .done(function(data) {
+                //         console.log(data);
+                //         $(".baconText").text(data[0]);
+                //         })
+                //         .fail(function() {
+                //         alert("no good");
+                //         });
+                // console.log($ === jQuery)
+                // return false;
+
+                $.ajax({
+                    method: "POST",
+                    url: "/post-comment",
+                    data: {
+                            username: form.username.value, 
+                            comment: form.comment.value,
+                            article_id: form.article_id.value
+                        }
+                }).done(function(data) {
+                    console.log("done")
+                })
+                return false;
+            }
+        </script>
+        
     </div>
 </body>
 </html>
