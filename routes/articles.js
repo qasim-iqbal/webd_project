@@ -17,7 +17,10 @@ router.get('/update/:id', async (req, res) => {
     if (article == null) res.redirect('/')
     res.render('articles/update', {article: article})
 })
-
+router.get('/reply/:id', async (req, res) => {
+    const article = await Article.findById(req.params.id)
+    res.render('articles/reply', {article: article})
+})
 router.get('/:slug', async (req, res) => {
     const article = await Article.findOne({slug: req.params.slug})
     if (article == null) res.redirect('/')
@@ -35,6 +38,28 @@ router.put('/:id', async (req, res, next) => {
     }, saveArticleAndRedirect('update')
 )
 
+router.put('/replied/:id', async (req, res, next) => {
+    req.article = await article.findById(req.params.id)
+    next()
+    }, saveCommentAndRedirect('view')
+)
+function saveCommentAndRedirect() {
+    return async (req, res) => {
+        let article = req.article
+
+        Article.findByIdAndUpdate(
+            article._id,
+            {$push: {"comments": {postedBy:"blah2", comment:req.body.comments}}},
+            {safe: true, upsert: true, new: true},
+            (err, doc) => {
+                console.log('err');
+            }
+        )
+        res.redirect(`/articles/${article.slug}`)
+
+    }
+
+}
 function saveArticleAndRedirect(path) {
     return async (req, res) => {
         let article = req.article

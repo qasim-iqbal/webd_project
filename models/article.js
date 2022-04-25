@@ -23,6 +23,14 @@ const articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    comments: [{
+        postedBy: String,
+        comment: String,
+        postedDate: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     slug: {
         type: String,
         required: true,
