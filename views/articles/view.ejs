@@ -23,60 +23,28 @@
                 <p class="card-text"><%= article.description %></p>
 
                 <a href="/articles/update/<%= article.id %>" class="btn btn-info"> Edit</a>
-                <a id="reply" href="/articles/reply/<%= article.id %>" class="btn btn-info"> Reply</a>
+                <!-- <a id="reply" href="/articles/reply/<%= article.id %>" class="btn btn-info"> Reply</a> -->
             </div>
         </div>
-<!-- 
+
         <div class="card my-4">
             <h5 class="card-header"> Leave a Comment:</h5>
             <div class="card-body">
-                <form method="POST" action="/post-comment" onsubmit="return postComment(this);">
-                    <input type="hidden" name="article_id" value="<%= article._id %>"/>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="username" /> 
-                    </div>
+                <!-- <form method="POST" action="/post-comment" onsubmit="return postComment(this);">-->
+                    <form action="/articles/replied/<%= article.id %>?_method=PUT" method="post">
+                        <input type="hidden" name="article_id" value="<%= article._id %>"/>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="username" /> 
+                        </div>
 
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" placeholder="message here ..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" name="comment" placeholder="message here ..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
---
-        <script>
-
-            function postComment(form) {
-                // $.ajax({
-                //         method: "POST",
-                //         url: "https://baconipsum.com/api/?type=all-meat",
-                //         dataType: "json"
-                //     })
-                //         .done(function(data) {
-                //         console.log(data);
-                //         $(".baconText").text(data[0]);
-                //         })
-                //         .fail(function() {
-                //         alert("no good");
-                //         });
-                // console.log($ === jQuery)
-                // return false;
-
-                $.ajax({
-                    method: "POST",
-                    url: "/post-comment",
-                    data: {
-                            username: form.username.value, 
-                            comment: form.comment.value,
-                            article_id: form.article_id.value
-                        }
-                }).done(function(data) {
-                    console.log("done")
-                })
-                return false;
-            }
-        </script>
-         -->
+        
         <% if (article.comments.length<1) { %>
             <h2>No Comments</h2>
         <% } else {%>
@@ -86,11 +54,11 @@
             
             <div class="card bg-light mb-3" style="max-width: 80rem;">
                 <div class="card-header d-flex justify-content-between">
-                        <div>User</div>
+                        <div><%= article.postedBy %></div>
                         <div><%= article.postedDate.toLocaleString() %></div>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-right"><%= article.comment %></p>
+                    <p class="card-text text-left"><%= article.comment %></p>
                 </div>
             </div>
         <%}) %>

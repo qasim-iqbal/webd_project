@@ -49,7 +49,7 @@ function saveCommentAndRedirect() {
 
         Article.findByIdAndUpdate(
             article._id,
-            {$push: {"comments": {postedBy:"blah2", comment:req.body.comments}}},
+            {$push: {"comments": {postedBy: req.body.username, comment:req.body.comment}}},
             {safe: true, upsert: true, new: true},
             (err, doc) => {
                 console.log('err');
