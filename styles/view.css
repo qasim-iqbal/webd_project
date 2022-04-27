@@ -1,0 +1,22 @@
+.btn-secondary{
+    background-color: #8064A2;
+}
+
+.card-body{
+    background-color: aqua;
+    text-align: center;
+    margin: auto;
+}
+
+.first-half{
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.body{
+    background-color:rgb(92, 137, 175);
+}
+
