@@ -48,6 +48,24 @@
                 </form>
             </div>
         </div>
+        
+        <% if (article.comments.length<1) { %>
+            <h2>No Comments</h2>
+        <% } else {%>
+            <h2 style="padding-top: 3%;">Comments</h2>        
+        <% } %>
+        <% article.comments.forEach(article => {%>
+            
+            <div class="card bg-light mb-3" style="max-width: 80rem; background-color: rgb(132, 243, 243);">
+                <div class="card-header d-flex justify-content-between" style="background-color: rgb(132, 243, 243);">
+                        <div><%= article.postedBy %></div>
+                        <div><%= article.postedDate.toLocaleString() %></div>
+                </div>
+                <div class="card-body" style="background-color: rgb(132, 243, 243);">
+                    <p class="card-text text-left"><%= article.comment %></p>
+                </div>
+            </div>
+        <%}) %>
     </div>
 </body>
 </html>
