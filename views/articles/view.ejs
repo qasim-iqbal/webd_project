@@ -6,19 +6,23 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/view.css">
     <title>Blog</title>
 </head>
-<body>
+<body style="background-color:rgb(92, 137, 175)">
+    <div class="first-half" style="background-color: #c4e2f9; border: 3px solid white;"></div>
+
+    </div>
     <div class="container">
 
-        <a href="/" class="btn btn-secondary my-4"> All Articles</a>
+        <a href="/" class="btn btn-secondary my-4" style="background-color: blueviolet;"> All Articles</a>
 
         <div class="card bg-light mb-3" style="max-width: 80rem;">
             <div class="card-header d-flex justify-content-between">
                     <div>User</div>
                     <div><%= article.createdAt.toLocaleDateString() %></div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color: rgb(132, 243, 243);">
                 <h2 class="mb-1"><%= article.title %></h2>
                 <p class="card-text"><%= article.description %></p>
 
@@ -27,7 +31,7 @@
             </div>
         </div>
 
-        <div class="card my-4">
+        <div class="card my-4" style="margin-top: 3%; background-color: rgb(132, 243, 243);">
             <h5 class="card-header"> Leave a Comment:</h5>
             <div class="card-body">
                 <!-- <form method="POST" action="/post-comment" onsubmit="return postComment(this);">-->
@@ -44,24 +48,6 @@
                 </form>
             </div>
         </div>
-        
-        <% if (article.comments.length<1) { %>
-            <h2>No Comments</h2>
-        <% } else {%>
-            <h2>Comments</h2>        
-        <% } %>
-        <% article.comments.forEach(article => {%>
-            
-            <div class="card bg-light mb-3" style="max-width: 80rem;">
-                <div class="card-header d-flex justify-content-between">
-                        <div><%= article.postedBy %></div>
-                        <div><%= article.postedDate.toLocaleString() %></div>
-                </div>
-                <div class="card-body">
-                    <p class="card-text text-left"><%= article.comment %></p>
-                </div>
-            </div>
-        <%}) %>
     </div>
 </body>
 </html>
