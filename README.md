@@ -11,6 +11,8 @@ The website also makes use of D3 and webservices to show statistics for articles
 Most of the styling for the site was done using Bootstarp.
 
 
+# Web Development Final Project
+Final project for the CSCI 3230, the idea is to make blog website for students
 
 | Group Member Name | GitHub Username (GitHub URL)|
 | :------------------------:|:--------------------------------------:|
@@ -18,3 +20,8 @@ Most of the styling for the site was done using Bootstarp.
 | Mayur Bhai | [mayurbhai24](https://github.com/mayurbhai24) |
 | Nirojan Arunakirinathan | [NirojanAruna](https://github.com/NirojanAruna) |
 | Saffana Ahammed | [saffanaa](https://github.com/saffanaa) |
+
+Running the Application
+
+### npm i 
+### npm run dev
