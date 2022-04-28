@@ -27,6 +27,8 @@ Install the dependencies
 Run the server
 ### npm run dev
 
+Usage: To use the application, after launching you will need to register as a new user and then will have to login. Thereby will have to create new posts as no posts are preloaded in the database
+
 Go to localhost:5000 if not already open
 
 #### References
