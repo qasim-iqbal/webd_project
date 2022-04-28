@@ -21,7 +21,11 @@ Final project for the CSCI 3230, the idea is to make blog website for students
 | Nirojan Arunakirinathan | [NirojanAruna](https://github.com/NirojanAruna) |
 | Saffana Ahammed | [saffanaa](https://github.com/saffanaa) |
 
-Running the Application
+Steps for running the application
+Install the dependencies
+### npm install
 
-### npm i 
+Run the server
 ### npm run dev
+
+Go to localhost:5000 if not already open
