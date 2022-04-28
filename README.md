@@ -30,6 +30,6 @@ Run the server
 Go to localhost:5000 if not already open
 
 #### References
-https://www.passportjs.org/packages/passport-local
-https://www.npmjs.com/package/passport-local
-https://www.npmjs.com/package/bcryptjs
+###### https://www.passportjs.org/packages/passport-local
+###### https://www.npmjs.com/package/passport-local
+###### https://www.npmjs.com/package/bcryptjs
