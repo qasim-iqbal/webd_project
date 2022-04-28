@@ -1,20 +1,17 @@
 const mongoose = require('mongoose')
-const marked = require('marked')
 const slugify = require('slugify')
-
-// const commentSchema = new mongoose.Schema({
-//     body: String
-// })
 
 const articleSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
     },
-    description: {
+
+    topic: {
         type: String
     },
-    markdown: {
+
+    content: {
         type: String,
         required: true
     },
@@ -23,6 +20,7 @@ const articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    
     comments: [{
         postedBy: String,
         comment: String,
@@ -46,4 +44,3 @@ articleSchema.pre('validate', function(next) {
 })
 
 module.exports = mongoose.model('Article', articleSchema)
-// module.exports = mongoose.model('Comment', commentSchema)

@@ -2,6 +2,10 @@
     background-color: #8064A2 !important;
 }
 
+.wrapper {
+    transform: translateY(100%);
+}
+
 .first-half .icons .fa {
     padding: 20px;
     font-size: 30px;

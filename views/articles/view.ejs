@@ -6,7 +6,9 @@
 
             <div class="card bg-light mb-3" style="max-width: 80rem;">
                 <div class="card-header d-flex justify-content-between">
-                    <div>User</div>
+                    <div>
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
                     <div>
                         <%= article.createdAt.toLocaleDateString() %>
                     </div>
@@ -16,7 +18,7 @@
                         <%= article.title %>
                     </h2>
                     <p class="card-text">
-                        <%= article.description %>
+                        <%= article.topic %>
                     </p>
 
                     <a href="/articles/update/<%= article.id %>" class="btn btn-info"> Edit</a>
