@@ -10,6 +10,9 @@ The website also makes use of D3 and webservices to show statistics for articles
 
 Styling for the site was done using Bootstrap and custom CSS.
 
+Independent Study Google Slide link : 
+https://docs.google.com/presentation/d/1u5n47wy67LlsWrwrTHbTdg5CflWe4Cp-VBSQhseo6k4/edit?usp=sharing
+
 | Group Member Name | GitHub Username (GitHub URL)|
 | :------------------------:|:--------------------------------------:|
 | Qasim Iqbal | [qasim-iqbal](https://github.com/qasim-iqbal) |
