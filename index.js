@@ -28,7 +28,7 @@ const session = require("express-session")({
     saveUninitialized: false
 });
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 app.listen(port, () => {
     console.log (`Server started at port ${port}`)
 })
@@ -41,7 +41,6 @@ app.use('/stats', statsRouters)
 app.use(session)
 app.use(passport.initialize())
 app.use(passport.session())
-
 passport.use(Users.createStrategy())
 
 passport.serializeUser(Users.serializeUser((user, done) => {
@@ -57,15 +56,19 @@ passport.deserializeUser(Users.deserializeUser((id, done) => {
 passport.use(new localStrategy((username, password, done) => {
 	Users.findOne({ username: username }, (err, user) => {
 
-		if (err) return done(err);
-		if (!user) return done(null, false, { message: 'User not found' });
+        if (err) return done(err);
+        // Checks if the user exists
+		if (!user) return done(null, false);
 
+        // Validates the inputted password with the encrypted password
 		bcryptjs.compare(password, user.password, (err, result) => {
-
 			if (err) return done(err);
-			if (result == false) return done(null, false, { message: 'Password incorrect' });
+			if (result == false) {
+                return done(null, false);
+            } else {
+                return done(null, user);
+            }
 			
-			return done(null, user);
 		});
 	});
 }));
@@ -97,5 +100,5 @@ app.get("/register", notLoggedIn, async function(req, res) {
 })
 app.get("/", loggedIn , async function(req, res) {
     const articles = await Article.find().sort({createdAt: 'desc'})
-    res.render('articles/index', {articles: articles})
+    res.render('articles/index', {articles: articles, user: req.user})
 })
