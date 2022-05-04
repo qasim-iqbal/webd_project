@@ -1,5 +1,5 @@
 # Web Development Final Project
-Final project for the CSCI 3230, the idea is to make blog website for students
+Final project for the CSCI 3230, the idea is to make blog website for students where students can add comments and respond in chat
 
 The website is made using NodeJs for backend and EJS for templating. 
 The site has login functionality, and allows user to Create, Read, Update and Delete blogs. Users can also reply to existing blog posts.
